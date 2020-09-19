@@ -1,15 +1,13 @@
 {
-  "name": "koa-ts-cli",
+  "name": "koa-with-ts-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "files": [
-    "bin",
-    "lib"
+  "keywords": [
+    "koa",
+    "typescript",
+    "koa-template"
   ],
-  "bin": {
-    "koa-ts": "bin/index.js"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +15,14 @@
     "type": "git",
     "url": "git+https://github.com/AruSeito/koa-ts-cli.git"
   },
-  "author": "AruSeito",
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "bin": {
+    "koa-ts": "bin/index.js"
+  },
+  "author": "aruseito",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AruSeito/koa-ts-cli/issues"
