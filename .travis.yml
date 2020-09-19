@@ -2,7 +2,27 @@ language: node_js
 node_js:
   - "12.13"
 
-deploy:
-  provider: npm
-  email: AruSeito@gmail.com
-  api_key: "$NPM_TOKEN"
+stages:
+  - test
+  - name: deploy
+
+jobs:
+  include:
+    - stage: test
+    script: 
+      - echo "Testing Started ..."
+      - npm run test
+      - echo "Testing Finished."
+    - stage: deploy
+    script:
+      - echo "NPM Deploying Started .."
+      - npm run build
+      - echo "NPM Building Finished."
+
+    deploy: 
+      provider: npm
+       email: AruSeito@gmai.com
+       api_key: "$NPM_TOKEN"
+       skip_cleanup: true
+       on:
+         branche: prod
