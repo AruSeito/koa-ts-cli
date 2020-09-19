@@ -1,38 +1,45 @@
-const chalk = require("chalk");
-const ora = require("ora");
-const childProcess = require("child_process");
-const { promisify } = require("util");
-const download = promisify(require("download-git-repo"));
+import chalk = require('chalk');
+import ora = require('ora');
+import childProcess = require('child_process');
+import { promisify } from 'util';
+import * as fs from 'fs';
+import * as download from 'download-git-repo';
 
-module.exports.log = {
-  warning(msg = "") {
+export const log = {
+  warning(msg = '') {
     console.log(chalk.yellow(`${msg}`));
   },
-  error(msg = "") {
+  error(msg = '') {
     console.log(chalk.red(`${msg}`));
   },
-  success(msg = "") {
+  success(msg = '') {
     console.log(chalk.green(`${msg}`));
   },
 };
 
-module.exports.cloneRepo = async (repo: string, dest: string) => {
+export const cloneRepo = async (repo: string, dest: string) => {
   const process = ora();
   try {
     process.start(`模板下载......${repo}`);
     await download(repo, dest);
   } catch (e) {
-    process.stop(`模板下载失败:${e}`);
+    process.stop();
   } finally {
-    process.succeed("模板下载成功");
+    process.succeed('模板下载成功');
   }
 };
 
-module.exports.runCmd = (cmd: string) => {
+export const runCmd = (cmd: string) => {
   return new Promise((resolve, reject) => {
-    childProcess.exec(cmd, (err: string, ...arg: any) => {
+    childProcess.exec(cmd, (err) => {
       if (err) return reject(err);
-      return resolve(...arg);
+      return resolve();
     });
   });
+};
+
+export const getPackage: (field: string) => string = (field: string) => {
+  const packageInfoJson = fs.readFileSync('../../package.json', 'utf-8');
+  const packageInfo = JSON.parse(packageInfoJson);
+  return packageInfo[field];
 };

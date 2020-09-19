@@ -1,7 +1,7 @@
-const { log, cloneRepo } = require("../utils/index");
+import { log, cloneRepo } from '../utils/index';
 
-module.exports.init = async (name: string) => {
+export const init = async (name: string) => {
   log.success(`🚀创建项目:${name}`);
 
-  await cloneRepo("github:AruSeito/koa-ts-server-template", name);
+  await cloneRepo('github:AruSeito/koa-ts-server-template', name);
 };

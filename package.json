@@ -13,8 +13,8 @@
     "build": "tsc",
     "lint": "npm run lint:prettier && npm run eslint && npm run tslint",
     "eslint": "eslint --ext .ts ./ --cache --quiet",
-    "lint:prettier": "prettier --list-different \"**/*.{ts,tsx,js,jsx,json,css,less,yml,yaml,md}\"",
-    "fix:prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,less,yml,yaml,md}\""
+    "lint:prettier": "prettier --list-different \"**/*.ts\"",
+    "fix:prettier": "prettier --write \"**/*.ts\""
   },
   "repository": {
     "type": "git",
