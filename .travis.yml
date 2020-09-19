@@ -9,20 +9,20 @@ stages:
 jobs:
   include:
     - stage: test
-    script: 
-      - echo "Testing Started ..."
-      - npm run test
-      - echo "Testing Finished."
+      script: 
+        - echo "Testing Started ..."
+        - npm run test
+        - echo "Testing Finished."
     - stage: deploy
-    script:
-      - echo "NPM Deploying Started .."
-      - npm run build
-      - echo "NPM Building Finished."
+      script:
+        - echo "NPM Deploying Started .."
+        - npm run build
+        - echo "NPM Building Finished."
 
-    deploy: 
-      provider: npm
-       email: AruSeito@gmai.com
-       api_key: "$NPM_TOKEN"
-       skip_cleanup: true
-       on:
-         branche: prod
+      deploy: 
+        provider: npm
+        email: AruSeito@gmai.com
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          branche: prod
