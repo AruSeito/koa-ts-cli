@@ -21,7 +21,7 @@ export const cloneRepo = async (repo: string, dest: string) => {
   const process = ora();
   try {
     process.start(`模板下载......${repo}`);
-    await download(repo, dest);
+    await promisify(download(repo, dest));
   } catch (e) {
     process.stop();
   } finally {
