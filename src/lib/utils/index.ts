@@ -4,6 +4,7 @@ import childProcess = require('child_process');
 import { promisify } from 'util';
 import * as fs from 'fs';
 import * as download from 'download-git-repo';
+import * as path from 'path';
 
 export const log = {
   warning(msg = '') {
@@ -39,7 +40,8 @@ export const runCmd = (cmd: string) => {
 };
 
 export const getPackage: (field: string) => string = (field: string) => {
-  const packageInfoJson = fs.readFileSync('../../package.json', 'utf-8');
+  const packagePath = path.resolve(__dirname, '../../../package.json');
+  const packageInfoJson = fs.readFileSync(packagePath, 'utf-8');
   const packageInfo = JSON.parse(packageInfoJson);
   return packageInfo[field];
 };
