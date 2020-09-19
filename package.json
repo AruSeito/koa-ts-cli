@@ -10,7 +10,11 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "npm run lint:prettier && npm run eslint && npm run tslint",
+    "eslint": "eslint --ext .ts ./ --cache --quiet",
+    "lint:prettier": "prettier --list-different \"**/*.{ts,tsx,js,jsx,json,css,less,yml,yaml,md}\"",
+    "fix:prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,less,yml,yaml,md}\""
   },
   "repository": {
     "type": "git",
@@ -43,6 +47,16 @@
     "@types/fs-extra": "^9.0.1",
     "@types/inquirer": "^7.3.1",
     "@types/ora": "^3.2.0",
-    "typescript": "^4.0.3"
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0"
   }
 }
