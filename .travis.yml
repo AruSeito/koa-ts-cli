@@ -1,0 +1,31 @@
+branches:
+  only:
+  - prod
+language: node_js
+node_js: 
+  - 'stable'
+
+
+install: npm install
+
+stages:
+  - name: lint
+  - name: deploy
+
+jobs:
+  include:
+    - stage: lint
+        script:
+          - node --version
+          - npm --version
+          - echo "Lint Started..."
+          - npm lint
+          - echo "Lint Finished."
+    - stage: deploy
+        script:
+          - provider: npm
+          - email: AruSeito@gmail.com
+          - api_key: '$NPM_TOKEN'
+          - on: 
+            branch: prod
+
