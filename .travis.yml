@@ -1,6 +1,6 @@
 branches:
   only:
-    - prod
+    - master
 
 language: node_js
 node_js:
@@ -29,4 +29,4 @@ jobs:
         api_key: "$NPM_TOKEN"
         skip_cleanup: true
         on:
-          branch: prod
+          branch: master
