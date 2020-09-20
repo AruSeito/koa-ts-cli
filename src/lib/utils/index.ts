@@ -5,12 +5,6 @@ import * as fs from 'fs';
 import * as download from 'download-git-repo';
 import * as path from 'path';
 
-interface ExecException extends Error {
-  cmd?: string;
-  killed?: boolean;
-  code?: number;
-  signal?: NodeJS.Signals;
-}
 export const log = {
   warning(msg = '') {
     console.log(chalk.yellow(`${msg}`));
@@ -54,6 +48,10 @@ export const getPackage = (field: string) => {
   return packageInfo[field];
 };
 
+/**
+ * @description 安装项目依赖文件
+ * @param dest 目标地址
+ */
 export const installPackage = async (dest: string) => {
   const installSpinner = ora('正在安装项目依赖文件，请稍后...').start();
   return new Promise((resolve, reject) => {
